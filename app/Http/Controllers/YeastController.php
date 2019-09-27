@@ -19,6 +19,9 @@ class YeastController extends Controller
     	return view('add_data');
     }
 
+    /*
+    * Add data
+    */
     public function addData(Request $request)
     {
     	$yeast = new Yeast();
