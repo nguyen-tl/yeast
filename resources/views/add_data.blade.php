@@ -1,6 +1,7 @@
 <html>
 	<title></title>
 	<body>
+		<a href="{{route('welcome')}}">Trang chủ</a>
 		<form action="{{route('add-data')}}" method="post">
 			@csrf
 			Tên loài: <input type='text' name='species'><br><br>

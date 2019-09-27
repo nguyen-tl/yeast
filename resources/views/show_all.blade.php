@@ -2,6 +2,7 @@
 	<title>
 	</title>
 	<body>
+		<a href="{{route('welcome')}}">Trang chủ</a>
 		<table style="border: 1px solid black; width:100%">
 			<thead>
 				<tr>

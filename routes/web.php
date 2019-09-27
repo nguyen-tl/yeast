@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::get('/yeasts', 'YeastController@getAllYeasts')->name('show-all');
 Route::get('/yeasts/add', 'YeastController@showFormAddData')->name('show-form-add-data');
 Route::post('/yeasts/add', 'YeastController@addData')->name('add-data');
