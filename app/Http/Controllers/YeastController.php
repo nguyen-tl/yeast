@@ -41,4 +41,11 @@ class YeastController extends Controller
 
     	return $this->getAllYeasts(); 
     }
+
+    public function getDetailYeast($id)
+    {
+        $yeast = Yeast::findOrFail($id);
+        
+        return view('yeast_detail', ['yeast' => $yeast]);
+    }
 }

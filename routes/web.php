@@ -16,4 +16,5 @@ Route::get('/', function () {
 })->name('welcome');
 Route::get('/yeasts', 'YeastController@getAllYeasts')->name('show-all');
 Route::get('/yeasts/add', 'YeastController@showFormAddData')->name('show-form-add-data');
+Route::get('/yeasts/{id}', 'YeastController@getDetailYeast')->name('get-detail-yeast');
 Route::post('/yeasts/add', 'YeastController@addData')->name('add-data');

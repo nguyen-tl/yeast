@@ -24,28 +24,24 @@
 					<td>Vùng trình tự định danh</td>
 					<td>Trình tự gene định danh</td>
 					<td>Vị trí chủng</td>
-					<td></td>
 				</tr>
 			</thead>
 			<tbody>
-				@if(isset($yeasts) && count($yeasts)>0)
-					@foreach($yeasts as $yeast)
-						<tr>
-							<td>{{$yeast->species}}</td>
-							<td>{{$yeast->source}}</td>
-							<td>{{$yeast->total_carotenoid}}</td>
-							<td>{{$yeast->beta_carotene}}</td>
-							<td>{{$yeast->biomass}}</td>
-							<td>{{$yeast->amylase}}</td>
-							<td>{{$yeast->cellulase}}</td>
-							<td>{{$yeast->protease}}</td>
-							<td>{{$yeast->ttc==1 ? '+' : '-'}}</td>
-							<td>{{$yeast->identify}}</td>
-							<td>{{$yeast->gene_sequences}}</td>
-							<td>{{$yeast->storage_location}}</td>
-							<td><a href="{{route('get-detail-yeast', $yeast->id)}}">Chi tiết</a></td>
-						</tr>
-					@endforeach
+				@if(isset($yeast) && !empty($yeast)>0)
+					<tr>
+						<td>{{$yeast->species}}</td>
+						<td>{{$yeast->source}}</td>
+						<td>{{$yeast->total_carotenoid}}</td>
+						<td>{{$yeast->beta_carotene}}</td>
+						<td>{{$yeast->biomass}}</td>
+						<td>{{$yeast->amylase}}</td>
+						<td>{{$yeast->cellulase}}</td>
+						<td>{{$yeast->protease}}</td>
+						<td>{{$yeast->ttc==1 ? '+' : '-'}}</td>
+						<td>{{$yeast->identify}}</td>
+						<td>{{$yeast->gene_sequences}}</td>
+						<td>{{$yeast->storage_location}}</td>
+					</tr>
 				@else
 				Không có dữ liệu
 				@endif
