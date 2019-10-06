@@ -29,13 +29,12 @@ class YeastController extends Controller
     	$yeast->source = $request->source;
     	$yeast->total_carotenoid = $request->total_carotenoid;
     	$yeast->beta_carotene = $request->beta_carotene;
-    	$yeast->biomass = $request->biomass;
     	$yeast->amylase = $request->amylase;
     	$yeast->cellulase = $request->cellulase;
     	$yeast->protease = $request->protease;
     	$yeast->ttc = $request->ttc;
-    	$yeast->identify = $request->identify;
-    	$yeast->gene_sequences = $request->gene_sequences;
+    	$yeast->its_sequences = $request->its_sequences;
+    	$yeast->d1_d2_sequences = $request->d1_d2_sequences;
     	$yeast->storage_location = $request->storage_location;
     	$yeast->save();
 

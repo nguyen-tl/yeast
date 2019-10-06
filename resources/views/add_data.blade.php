@@ -1,25 +1,96 @@
-<html>
-	<title></title>
-	<body>
-		<a href="{{route('welcome')}}">Trang chủ</a>
+@extends('layouts.root_layout')
+@section('title')Add data
+@endsection
+@section('css')
+<style type="text/css">
+	th,td {
+		border: 1px solid black;
+		text-align: center;
+	}
+</style>
+@endsection
+@section('content')
+@include('layouts.navbar')
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
 		<form action="{{route('add-data')}}" method="post">
 			@csrf
-			Tên loài: <input type='text' name='species'><br><br>
-			Nguồn phân lập: <input type='text' name='source'><br><br>
-			Carotenoid(ug/g): <input type='text' name='total_carotenoid'><br><br>
-			beta-carotene(ug/g): <input type='text' name='beta_carotene'><br><br>
-			Hàm lượng sinh khối(g/ml): <input type='text' name='biomass'><br><br>
-			Amlyase(U/ml) : <input type='text' name='amylase'><br><br>
-			Cellulase(U/ml): <input type='text' name='cellulase'><br><br>
-			Protease(U/ml): <input type='text' name='protease'><br><br>
-			TTC(Y/N): <select name='ttc'>
-				<option value="1">Y</option>
-				<option value="0">N</option>
-			</select><br><br>
-			Vùng trình tự định danh: <input type='text' name='identify'><br><br>
-			Trình tự gene định danh: <input type='text' name='gene_sequences'><br><br>
-			Vị trí chủng: <input type='text' name='storage_location'><br><br>
-			<input type="submit" name="submit" value="Thêm">
-		</form>
-	</body>
-</html>
+			<div class="form-group row">
+				<label for="species" class="col-sm-2 col-form-label">Species</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="species" name='species'>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="source" class="col-sm-2 col-form-label">Source</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="source" name="source">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="total_carotenoid" class="col-sm-2 col-form-label">Carotenoid(ug/g)</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="total_carotenoid" name="total_carotenoid">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="beta_carotene" class="col-sm-2 col-form-label">beta-carotene(ug/g)</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="beta_carotene" name="beta_carotene">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="amylase" class="col-sm-2 col-form-label">Amlyase(U/ml)</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="amylase" name="amylase">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="cellulase" class="col-sm-2 col-form-label">Cellulase(U/ml)</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="cellulase" name="cellulase">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="protease" class="col-sm-2 col-form-label">Protease(U/ml)</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="protease" name="protease">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="ttc" class="col-sm-2 col-form-label">TTC(Y/N)</label>
+				<div class="col-sm-10">
+					<select class="form-control" name="ttc">
+						<option value="1">Y</option>
+						<option value="0">N</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="its_sequences" class="col-sm-2 col-form-label">ITS sequences</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="its_sequences" name="its_sequences">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="d1_d2_sequences" class="col-sm-2 col-form-label">D1/D2 sequences</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="d1_d2_sequences" name="d1_d2_sequences">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="storage_location" class="col-sm-2 col-form-label">Storage location</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="storage_location" name="storage_location">
+				</div>
+			</div>
+			<div class="form-group row">
+			<div class="col-sm-10">
+			<button type="submit" class="btn btn-primary">Add</button>
+			</div>
+			</div>
+	</div>
+	<div class="col-md-1"></div>
+</div>
+@endsection
