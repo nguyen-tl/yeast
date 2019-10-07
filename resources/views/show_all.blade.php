@@ -49,4 +49,9 @@
 	</div>
 	<div class="col-md-1"></div>
 </div>
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4 flex-center">{{ $yeasts->links() }}</div>
+	<div class="col-md-4"></div>
+</div>
 @endsection

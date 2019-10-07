@@ -9,7 +9,7 @@ class YeastController extends Controller
 {
     public function getAllYeasts()
     {
-    	$yeasts = Yeast::all();
+    	$yeasts = Yeast::paginate();
 
     	return view('show_all', ['yeasts' => $yeasts]);
     }
@@ -46,5 +46,17 @@ class YeastController extends Controller
         $yeast = Yeast::findOrFail($id);
         
         return view('yeast_detail', ['yeast' => $yeast]);
+    }
+
+    public function search(Request $request)
+    {
+        $key = $request->key;
+        if (empty($key)) {
+            return $this->getAllYeasts();
+        }
+
+        $yeasts = Yeast::where('species', 'like', '%' . $key . '%')->paginate();
+
+        return view('show_all', ['yeasts' => $yeasts, 'key' => $key]);
     }
 }
