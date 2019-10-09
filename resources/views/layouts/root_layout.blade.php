@@ -70,11 +70,36 @@
                 margin-bottom: 30px;
             }
         </style>
-        <script src="{{asset('jquery/jquery-3.3.1.slim.min.js')}}"></script>
-        <script src="{{asset('bootstrap/js/bootstrap.min.js"></script>
+        <script src="{{asset('jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                <?php $arr = isset($out) ? $out : []; ?>
+                var array = <?php echo json_encode($arr); ?>;
+                if (array.length > 1) {
+                    var data = google.visualization.arrayToDataTable(array);
+
+                    var options = {
+                        title: 'Research trends (Source: ScienceDirect)',
+                        curveType: 'function',
+                        legend: { position: 'none' }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                    document.getElementById('curve_chart').style.display = 'block';
+
+                    chart.draw(data, options);
+                }
+            }
+        </script>
     </head>
     <body>
         @yield('content')
+        <div id="curve_chart" style="width: 900px; height: 500px; margin-left: 25%; display: none"></div>
     </body>
     @yield('js')
 </html>

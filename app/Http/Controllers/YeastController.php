@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Yeast;
+use Goutte\Client;
 
 class YeastController extends Controller
 {
@@ -50,13 +51,25 @@ class YeastController extends Controller
 
     public function search(Request $request)
     {
+
         $key = $request->key;
         if (empty($key)) {
             return $this->getAllYeasts();
         }
 
         $yeasts = Yeast::where('species', 'like', '%' . $key . '%')->paginate();
+        $client = new Client();
+        $crawler = $client->request('GET', 'https://www.sciencedirect.com/search/advanced?qs=' . $key);
+        $resultString = $crawler->filter('title')->text();
+        $out = [['Year', 'Count']];
+        if ((int) str_replace(',', '', explode(' ', $resultString)[0]) > 0) {
+            for ($i=2000; $i<2021; $i++) {
+                $crawler = $client->request('GET', 'https://www.sciencedirect.com/search/advanced?qs=' . $key . '&years=' . $i . '&lastSelectedFacet=years');
+                $resultString = $crawler->filter('title')->text();
+                $out[] = ['' . $i, (int) str_replace(',', '', explode(' ', $resultString)[0])];
+            }
+        }        
 
-        return view('show_all', ['yeasts' => $yeasts, 'key' => $key]);
+        return view('show_all', ['yeasts' => $yeasts, 'key' => $key, 'out' => $out]);
     }
 }
