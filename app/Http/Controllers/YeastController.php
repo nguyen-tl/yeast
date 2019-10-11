@@ -72,4 +72,9 @@ class YeastController extends Controller
 
         return view('show_all', ['yeasts' => $yeasts, 'key' => $key, 'out' => $out]);
     }
+
+    public function showBlastNucleotideForm()
+    {
+        return view('show_blastn');
+    }
 }

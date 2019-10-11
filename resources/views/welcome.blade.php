@@ -41,6 +41,7 @@
         <div class="links">
             <a href="{{route('show-all')}}">Show all</a>
             <a href="{{route('show-form-add-data')}}"><i class="fas fa-plus"></i> Add</a>
+            <a href="{{route('show-blast-nucleotide')}}">BLASTn</a>
         </div>
     </div>
 </div>
