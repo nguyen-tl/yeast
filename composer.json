@@ -12,6 +12,7 @@
         "fabpot/goutte": "^3.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
+        "laravel/socialite": "^4.2",
         "laravel/tinker": "^1.0",
         "spatie/crawler": "^4.6"
     },

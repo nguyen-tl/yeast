@@ -52,17 +52,17 @@
 			<div class="col-md-3 borderd-noneleft">
 				<div class="row margin15"><span class="tit">Carotenoid (ug/g)</span></div>
 				<div class="row margin15"><span class="tit">beta-carotene (ug/g)</span></div>
-				<div class="row margin15"><span class="tit">Amlyase (U/ml)</span></div>
-				<div class="row margin15"><span class="tit">Cellulase (U/ml)</span></div>
-				<div class="row margin15"><span class="tit">Protease (U/ml)</span></div>
+				<div class="row margin15"><span class="tit">Amlyase (Y/N)</span></div>
+				<div class="row margin15"><span class="tit">Cellulase (Y/N)</span></div>
+				<div class="row margin15"><span class="tit">Protease (Y/N)</span></div>
 				<div class="row margin15"><span class="tit">TTC (Y/N)</span></div>
 			</div>
 			<div class="col-md-3 borderd-noneleft">
 				<div class="row margin15">{{$yeast->total_carotenoid}}</div>
 				<div class="row margin15">{{$yeast->beta_carotene}}</div>
-				<div class="row margin15">{{$yeast->amylase}}</div>
-				<div class="row margin15">{{$yeast->cellulase}}</div>
-				<div class="row margin15">{{$yeast->protease}}</div>
+				<div class="row margin15">{{$yeast->amylase==1 ? '+' : '-'}}</div>
+				<div class="row margin15">{{$yeast->cellulase==1 ? '+' : '-'}}</div>
+				<div class="row margin15">{{$yeast->protease==1 ? '+' : '-'}}</div>
 				<div class="row margin15">{{$yeast->ttc==1 ? '+' : '-'}}</div>
 			</div>
 		</div>

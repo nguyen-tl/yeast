@@ -57,7 +57,7 @@ class YeastController extends Controller
             return $this->getAllYeasts();
         }
 
-        $yeasts = Yeast::where('species', 'like', '%' . $key . '%')->paginate();
+        $yeasts = Yeast::where('species', 'like', '%' . $key . '%')->paginate()->setPath(url()->full());
         $client = new Client();
         $crawler = $client->request('GET', 'https://www.sciencedirect.com/search/advanced?qs=' . $key);
         $resultString = $crawler->filter('title')->text();
@@ -68,9 +68,14 @@ class YeastController extends Controller
                 $resultString = $crawler->filter('title')->text();
                 $out[] = ['' . $i, (int) str_replace(',', '', explode(' ', $resultString)[0])];
             }
-        }        
+        }
 
-        return view('show_all', ['yeasts' => $yeasts, 'key' => $key, 'out' => $out]);
+        $crawler = $client->request('GET', 'https://www.sciencedirect.com/search/advanced?qs=' . $key . '&show=25&sortBy=date');
+        $papers =$crawler->filter('.result-list-title-link.u-font-serif.text-s')->each(function ($node) {
+            return ['https://www.sciencedirect.com' . $node->attr('href'), $node->text()];
+        });  
+
+        return view('show_all', ['yeasts' => $yeasts, 'key' => $key, 'out' => $out, 'papers' => $papers]);
     }
 
     public function showBlastNucleotideForm()

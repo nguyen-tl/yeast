@@ -20,9 +20,9 @@
 					<th scope="col">Species</th>
 					<th scope="col">Carotenoid<br>ug/g</th>
 					<th scope="col">beta-carotene<br>ug/g</th>
-					<th scope="col">Amlyase<br>U/ml</th>
-					<th scope="col">Cellulase<br>U/ml</th>
-					<th scope="col">Protease<br>U/ml</th>
+					<th scope="col">Amlyase<br>Y/N</th>
+					<th scope="col">Cellulase<br>Y/N</th>
+					<th scope="col">Protease<br>Y/N</th>
 					<th scope="col">TTC<br>Y/N</th>
 					<th scope="col"></th>
 				</tr>
@@ -34,9 +34,9 @@
 							<td>{{$yeast->species}}</td>
 							<td>{{$yeast->total_carotenoid}}</td>
 							<td>{{$yeast->beta_carotene}}</td>
-							<td>{{$yeast->amylase}}</td>
-							<td>{{$yeast->cellulase}}</td>
-							<td>{{$yeast->protease}}</td>
+							<td>{{$yeast->amylase==1 ? '+' : '-'}}</td>
+							<td>{{$yeast->cellulase==1 ? '+' : '-'}}</td>
+							<td>{{$yeast->protease==1 ? '+' : '-'}}</td>
 							<td>{{$yeast->ttc==1 ? '+' : '-'}}</td>
 							<td><a href="{{route('get-detail-yeast', $yeast->id)}}">Detail</a></td>
 						</tr>

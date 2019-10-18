@@ -41,21 +41,30 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="amylase" class="col-sm-2 col-form-label">Amlyase(U/ml)</label>
+				<label for="amylase" class="col-sm-2 col-form-label">Amlyase(Y/N)</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="amylase" name="amylase">
+					<select class="form-control" name="amylase">
+						<option value="1">Y</option>
+						<option value="0">N</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="cellulase" class="col-sm-2 col-form-label">Cellulase(U/ml)</label>
+				<label for="cellulase" class="col-sm-2 col-form-label">Cellulase(Y/N)</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="cellulase" name="cellulase">
+					<select class="form-control" name="cellulase">
+						<option value="1">Y</option>
+						<option value="0">N</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="protease" class="col-sm-2 col-form-label">Protease(U/ml)</label>
+				<label for="protease" class="col-sm-2 col-form-label">Protease(Y/N)</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="protease" name="protease">
+					<select class="form-control" name="protease">
+						<option value="1">Y</option>
+						<option value="0">N</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group row">

@@ -98,8 +98,22 @@
         </script>
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=410479849870831&autoLogAppEvents=1"></script>
         @yield('content')
         <div id="curve_chart" style="width: 900px; height: 500px; margin-left: 25%; display: none"></div>
+        @if(isset($papers) && count($papers) > 0)
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2>Newest Articles From ScienceDirect</h2>
+                @for($i = 0; $i < count($papers); $i++)
+                <p align="justify"><a href="{{$papers[$i][0]}}" target="blank">[{{$i+1}}] {{$papers[$i][1]}}</a></p>
+                @endfor
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        @endif
     </body>
     @yield('js')
 </html>

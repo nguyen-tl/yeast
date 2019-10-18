@@ -42,7 +42,9 @@
             <a href="{{route('show-all')}}">Show all</a>
             <a href="{{route('show-form-add-data')}}"><i class="fas fa-plus"></i> Add</a>
             <a href="{{route('show-blast-nucleotide')}}">BLASTn</a>
+            <a href="{{route('show-all-post')}}">Post</a>
         </div>
     </div>
 </div>
+<div class="fb-comments" data-href="http://localhost:8000/" data-width="" data-numposts="10"></div>
 @endsection('content')
