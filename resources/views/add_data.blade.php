@@ -14,7 +14,7 @@
 <div class="row">
 	<div class="col-md-1"></div>
 	<div class="col-md-10">
-		<form action="{{route('add-data')}}" method="post">
+		<form action="{{route('add-data')}}" method="post" enctype='multipart/form-data'>
 			@csrf
 			<div class="form-group row">
 				<label for="species" class="col-sm-2 col-form-label">Species</label>
@@ -95,10 +95,41 @@
 				</div>
 			</div>
 			<div class="form-group row">
-			<div class="col-sm-10">
-			<button type="submit" class="btn btn-primary">Add</button>
+				<label for="species_imgs" class="col-sm-2 col-form-label">Species Images</label>
+				<div class="col-sm-10">
+					<input type="file" accept="image/*" class="form-control" id="species_imgs" name="species_imgs[]" multiple="multiple">
+				</div>
 			</div>
+			<div class="form-group row">
+				<label for="amylase_img" class="col-sm-2 col-form-label">Amylase Image</label>
+				<div class="col-sm-10">
+					<input type="file" accept="image/*" class="form-control" id="amylase_img" name="amylase_img">
+				</div>
 			</div>
+			<div class="form-group row">
+				<label for="cellulase_img" class="col-sm-2 col-form-label">Cellulase Image</label>
+				<div class="col-sm-10">
+					<input type="file" accept="image/*" class="form-control" id="cellulase_img" name="cellulase_img">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="protease_img" class="col-sm-2 col-form-label">Protease Image</label>
+				<div class="col-sm-10">
+					<input type="file" accept="image/*" class="form-control" id="protease_img" name="protease_img">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="ttc_img" class="col-sm-2 col-form-label">TTC Image</label>
+				<div class="col-sm-10">
+					<input type="file" accept="image/*" class="form-control" id="ttc_img" name="ttc_img">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<div class="col-md-1"></div>
 </div>

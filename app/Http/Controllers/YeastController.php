@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Yeast;
 use Goutte\Client;
+use Illuminate\Support\Str;
 
 class YeastController extends Controller
 {
@@ -25,7 +26,47 @@ class YeastController extends Controller
     */
     public function addData(Request $request)
     {
-    	$yeast = new Yeast();
+        $yeast = new Yeast();
+
+        $speciesImgs = $request->species_imgs;
+        if (!empty($speciesImgs)) {
+            $imgs = [];
+            foreach ($speciesImgs as $file) {
+                $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+                $imgs[] = $filename;
+                $file->move('upload', $filename);
+            }
+            $yeast->species_imgs = $imgs;
+        }
+        
+        if (isset($request->amylase_img)) {
+            $file = $request->amylase_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->amylase_img = $filename;
+        }
+
+        if (isset($request->cellulase_img)) {
+            $file = $request->cellulase_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->cellulase_img = $filename;
+        }
+
+        if (isset($request->protease_img)) {
+            $file = $request->protease_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->protease_img = $filename;
+        }
+
+        if (isset($request->ttc_img)) {
+            $file = $request->ttc_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->ttc_img = $filename;
+        }
+
     	$yeast->species = $request->species;
     	$yeast->source = $request->source;
     	$yeast->total_carotenoid = $request->total_carotenoid;
@@ -81,5 +122,51 @@ class YeastController extends Controller
     public function showBlastNucleotideForm()
     {
         return view('show_blastn');
+    }
+
+    public function updateImg($id, Request $request)
+    {
+        $yeast = Yeast::findOrFail($id);
+        $imgs = $yeast->species_imgs;
+        $speciesImgs = $request->species_imgs;
+        if (!empty($speciesImgs)) {
+            foreach ($speciesImgs as $file) {
+                $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+                $imgs[] = $filename;
+                $file->move('upload', $filename);
+            }
+            $yeast->species_imgs = $imgs;
+        }
+        
+        if (isset($request->amylase_img)) {
+            $file = $request->amylase_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->amylase_img = $filename;
+        }
+
+        if (isset($request->cellulase_img)) {
+            $file = $request->cellulase_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->cellulase_img = $filename;
+        }
+
+        if (isset($request->protease_img)) {
+            $file = $request->protease_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->protease_img = $filename;
+        }
+
+        if (isset($request->ttc_img)) {
+            $file = $request->ttc_img;
+            $filename = time() . Str::random(12) . '.' . $file->getClientOriginalExtension();
+            $file->move('upload', $filename);
+            $yeast->ttc_img = $filename;
+        }
+        $yeast->save();
+
+        return view('yeast_detail', ['yeast' => $yeast]);
     }
 }
