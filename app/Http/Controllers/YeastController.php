@@ -80,7 +80,7 @@ class YeastController extends Controller
     	$yeast->storage_location = $request->storage_location;
     	$yeast->save();
 
-    	return $this->getAllYeasts(); 
+    	return redirect()->back()->with('message', 'Add data successfully!');
     }
 
     public function getDetailYeast($id)
@@ -114,9 +114,12 @@ class YeastController extends Controller
         $crawler = $client->request('GET', 'https://www.sciencedirect.com/search/advanced?qs=' . $key . '&show=25&sortBy=date');
         $papers =$crawler->filter('.result-list-title-link.u-font-serif.text-s')->each(function ($node) {
             return ['https://www.sciencedirect.com' . $node->attr('href'), $node->text()];
+        });
+        $subTypes =$crawler->filter('.SubType.hor')->each(function ($node) {
+            return $node->text();
         });  
 
-        return view('show_all', ['yeasts' => $yeasts, 'key' => $key, 'out' => $out, 'papers' => $papers]);
+        return view('show_all', ['yeasts' => $yeasts, 'key' => $key, 'out' => $out, 'papers' => $papers, 'subTypes' => $subTypes]);
     }
 
     public function showBlastNucleotideForm()

@@ -108,7 +108,10 @@
             <div class="col-md-4">
                 <h2>Newest Articles From ScienceDirect</h2>
                 @for($i = 0; $i < count($papers); $i++)
-                <p align="justify"><a href="{{$papers[$i][0]}}" target="blank">[{{$i+1}}] {{$papers[$i][1]}}</a></p>
+                <p align="justify">
+                    <a href="{{$papers[$i][0]}}" target="blank">[{{$i+1}}] {{$papers[$i][1]}}</a><br>
+                    <i> {{$subTypes[$i]}}</i>
+                </p>
                 @endfor
             </div>
             <div class="col-md-4"></div>
